@@ -53,10 +53,10 @@ contact:
 # Configurações de navegação
 navigation:
   - title: "Início"
-    url: "/index.html"
+    url: "/MOCK/index.html"
   - title: "Sobre"
-    url: "/about.html"
+    url: "/MOCK/about.html"
   - title: "Serviços"
-    url: "/services.html"
+    url: "/MOCK/services.html"
   - title: "Contato"
-    url: "/contact.html"
+    url: "/MOCK/contact.html"
