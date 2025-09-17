@@ -16,11 +16,11 @@ const API_CONFIG = {
         
         // GitHub Pages - conecta com Railway
         if (hostname === 'edenilsonmaffezzoli.github.io') {
-            return 'https://web-production-b793800f.up.railway.app';
+            return 'https://mock-production-0129.up.railway.app';
         }
         
         // Produção Railway (fallback)
-        return 'https://web-production-b793800f.up.railway.app';
+        return 'https://mock-production-0129.up.railway.app';
     })(),
     ENDPOINTS: {
         // Autenticação
