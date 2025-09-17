@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from HomeServices_app import views
+from HomeServices_app import api_views
 from HomeServices_project import settings
 from django.contrib.auth.views import (
     # LogoutView, 
@@ -17,6 +18,14 @@ urlpatterns = [
 
     path('', views.Login.as_view(), name='login'),
     path('api/login/', views.ApiLogin.as_view(), name='api_login'),
+    
+    # API Endpoints
+    path('api/contact/', api_views.ContactAPIView.as_view(), name='api_contact'),
+    path('api/services/', api_views.ServicesAPIView.as_view(), name='api_services'),
+    path('api/services/categories/', api_views.ServiceCategoriesAPIView.as_view(), name='api_service_categories'),
+    path('api/workers/', api_views.WorkersAPIView.as_view(), name='api_workers'),
+    path('api/health/', api_views.HealthCheckAPIView.as_view(), name='api_health'),
+    
     path('logout', views.logout_view, name='logout'),
     path('user_registration/', views.User_Register.as_view(), name='user_registration'),
     path('Worker_Register/', views.Worker_Register.as_view(), name='Worker_Register'),

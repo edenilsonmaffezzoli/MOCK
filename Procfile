@@ -1,0 +1,1 @@
+web: gunicorn HomeServices_project.wsgi --log-file -
