@@ -46,10 +46,11 @@ CORS_ALLOWED_ORIGINS = [
     "https://edenilsonmaffezzoli.github.io",
     "http://edenilsonmaffezzoli.github.io",
     "http://192.168.2.15:8000",
+    "https://mock-production-0129.up.railway.app",
 ]
 
-# Permitir todos os origins durante desenvolvimento (remover em produção)
-CORS_ALLOW_ALL_ORIGINS = True
+# Permitir todas as origens em desenvolvimento
+CORS_ALLOW_ALL_ORIGINS = DEBUG
 
 CORS_ALLOW_CREDENTIALS = True
 

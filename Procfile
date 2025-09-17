@@ -1,1 +1,1 @@
-web: gunicorn HomeServices_project.wsgi --bind 0.0.0.0:$PORT --log-file -
+web: gunicorn HomeServices_project.wsgi -c gunicorn.conf.py
