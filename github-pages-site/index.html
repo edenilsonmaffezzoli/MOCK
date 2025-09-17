@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Serviço em Casa - Plataforma de Serviços Domésticos</title>
+    <title>Login - Serviço em Casa</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="serviços domésticos, eletricista, encanador, pedreiro, pintor, limpeza, jardinagem" name="keywords">
-    <meta content="Plataforma de serviços domésticos com profissionais qualificados" name="description">
+    <meta content="login, serviços domésticos, eletricista, encanador, pedreiro, pintor, limpeza, jardinagem" name="keywords">
+    <meta content="Faça login na plataforma de serviços domésticos com profissionais qualificados" name="description">
 
     <!-- Favicon -->
     <link href="assets/img/logo_servico_em_casa.png" rel="icon">
@@ -22,315 +22,336 @@
 
     <!-- Libraries Stylesheet -->
     <link href="assets/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+        .login-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+            margin: 20px;
+        }
+        
+        .login-left {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .login-right {
+            padding: 60px 40px;
+        }
+        
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+        
+        .user-type-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .user-type-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .user-type-btn.active {
+            border-color: #667eea;
+            background: #f8f9ff;
+            color: #667eea;
+        }
+        
+        .user-type-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .logo-section {
+            margin-bottom: 30px;
+        }
+        
+        .logo-section img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Carregando...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-light p-0">
-        <div class="row gx-0 d-none d-lg-flex">
-            <div class="col-lg-7 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small>São Paulo, SP, Brasil</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center py-3">
-                    <small class="far fa-clock text-primary me-2"></small>
-                    <small>Seg - Sex : 09:00 - 21:00</small>
-                </div>
-            </div>
-            <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>+55 11 98765-4321</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-0" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <img src="assets/img/logo_servico_em_casa.png" alt="Serviço em Casa" style="height: 60px; margin-right: 15px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));">
-            <h2 class="m-0 text-primary fw-bold">Serviço em Casa</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Início</a>
-                <a href="about.html" class="nav-item nav-link">Sobre</a>
-                <a href="services.html" class="nav-item nav-link">Serviços</a>
-                <a href="contact.html" class="nav-item nav-link">Contato</a>
-                <a href="home.html" class="nav-item nav-link">Login</a>
-            </div>
-            <a href="contact.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Agendar Serviço<i class="fa fa-arrow-right ms-3"></i></a>
-        </div>
-    </nav>
-    <!-- Navbar End -->
-
-    <!-- Hero Section Start -->
-    <div class="container-fluid p-0 pb-5">
-        <div class="hero-header bg-primary text-white text-center py-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <h1 class="display-3 text-white animated slideInDown mb-4">Serviço em Casa</h1>
-                        <h5 class="text-white text-uppercase mb-3 animated slideInDown">Conectamos você aos melhores profissionais</h5>
-                        <p class="fs-5 fw-medium text-white mb-4 pb-2">Especialistas em Serviços Domésticos • Reparos • Manutenção</p>
-                        <div class="d-flex justify-content-center gap-3">
-                            <a href="about.html" class="btn btn-light py-md-3 px-md-5 animated slideInLeft">Saiba Mais</a>
-                            <a href="services.html" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Nossos Serviços</a>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="row g-0">
+                <!-- Left Side - Branding -->
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="login-left">
+                        <div class="logo-section">
+                            <img src="assets/img/logo_servico_em_casa.png" alt="Serviço em Casa" class="mb-3">
+                            <h2 class="fw-bold">Serviço em Casa</h2>
+                            <p class="mb-4">Conectamos você aos melhores profissionais</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hero Section End -->
-
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1 class="display-5 mb-4">Nossos Serviços</h1>
-                <p class="mb-5">Profissionais qualificados para todas as suas necessidades domésticas</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <div class="service-icon bg-primary text-white d-flex align-items-center justify-content-center" style="width: 100%; height: 250px;">
-                                <i class="fas fa-bolt fa-5x"></i>
+                        
+                        <div class="features">
+                            <div class="feature-item mb-4">
+                                <i class="fas fa-shield-alt fa-2x mb-3"></i>
+                                <h5>Profissionais Verificados</h5>
+                                <p>Todos os prestadores passam por verificação rigorosa</p>
+                            </div>
+                            
+                            <div class="feature-item mb-4">
+                                <i class="fas fa-clock fa-2x mb-3"></i>
+                                <h5>Atendimento Rápido</h5>
+                                <p>Encontre profissionais disponíveis na sua região</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-star fa-2x mb-3"></i>
+                                <h5>Qualidade Garantida</h5>
+                                <p>Avaliações reais de clientes satisfeitos</p>
                             </div>
                         </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Eletricista</h4>
-                            <p>Serviços elétricos residenciais e comerciais com segurança e qualidade.</p>
-                            <a class="fw-medium" href="services.html">Saiba Mais<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <div class="service-icon bg-info text-white d-flex align-items-center justify-content-center" style="width: 100%; height: 250px;">
-                                <i class="fas fa-wrench fa-5x"></i>
+                
+                <!-- Right Side - Login Form -->
+                <div class="col-lg-6">
+                    <div class="login-right">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold text-dark">Bem-vindo de volta!</h3>
+                            <p class="text-muted">Faça login para acessar sua conta</p>
+                        </div>
+                        
+                        <!-- User Type Selector -->
+                        <div class="user-type-selector">
+                            <div class="user-type-btn active" data-type="cliente">
+                                <i class="fas fa-user fa-2x mb-2 d-block"></i>
+                                <strong>Cliente</strong>
+                                <small class="d-block text-muted">Contratar serviços</small>
+                            </div>
+                            <div class="user-type-btn" data-type="prestador">
+                                <i class="fas fa-tools fa-2x mb-2 d-block"></i>
+                                <strong>Prestador</strong>
+                                <small class="d-block text-muted">Oferecer serviços</small>
+                            </div>
+                            <div class="user-type-btn" data-type="admin">
+                                <i class="fas fa-crown fa-2x mb-2 d-block"></i>
+                                <strong>Admin</strong>
+                                <small class="d-block text-muted">Gerenciar sistema</small>
                             </div>
                         </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Encanador</h4>
-                            <p>Reparos hidráulicos, instalações e manutenção de sistemas de água.</p>
-                            <a class="fw-medium" href="services.html">Saiba Mais<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <div class="service-icon bg-warning text-white d-flex align-items-center justify-content-center" style="width: 100%; height: 250px;">
-                                <i class="fas fa-hammer fa-5x"></i>
+                        
+                        <!-- Login Form -->
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
                             </div>
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Pedreiro</h4>
-                            <p>Construção, reformas e reparos em alvenaria com qualidade profissional.</p>
-                            <a class="fw-medium" href="services.html">Saiba Mais<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <div class="service-icon bg-success text-white d-flex align-items-center justify-content-center" style="width: 100%; height: 250px;">
-                                <i class="fas fa-paint-roller fa-5x"></i>
+                            
+                            <div class="mb-4">
+                                <label for="password" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="password" placeholder="Sua senha" required>
                             </div>
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Pintor</h4>
-                            <p>Pintura residencial e comercial com acabamento impecável.</p>
-                            <a class="fw-medium" href="services.html">Saiba Mais<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <div class="service-icon bg-danger text-white d-flex align-items-center justify-content-center" style="width: 100%; height: 250px;">
-                                <i class="fas fa-broom fa-5x"></i>
-                            </div>
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Limpeza Doméstica</h4>
-                            <p>Serviços de limpeza residencial e comercial com produtos de qualidade.</p>
-                            <a class="fw-medium" href="services.html">Saiba Mais<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <div class="service-icon bg-secondary text-white d-flex align-items-center justify-content-center" style="width: 100%; height: 250px;">
-                                <i class="fas fa-seedling fa-5x"></i>
-                            </div>
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Jardinagem</h4>
-                            <p>Cuidado e manutenção de jardins, plantas e áreas verdes.</p>
-                            <a class="fw-medium" href="services.html">Saiba Mais<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-    <!-- About Start -->
-    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
-        <div class="container about px-lg-0">
-            <div class="row g-0 mx-lg-0">
-                <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <div class="bg-primary h-100 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-home fa-5x text-white"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-lg-5 pe-lg-0">
-                        <div class="section-title text-start">
-                            <h1 class="display-5 mb-4">Sobre o Serviço em Casa</h1>
-                        </div>
-                        <p class="mb-4 pb-2">Somos uma plataforma que conecta você aos melhores profissionais de serviços domésticos da sua região. Nossa missão é facilitar sua vida, oferecendo acesso rápido e seguro a prestadores qualificados.</p>
-                        <div class="row g-4 mb-4 pb-2">
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary" style="width: 60px; height: 60px;">
-                                        <i class="fa fa-users text-white"></i>
-                                    </div>
-                                    <div class="ms-3">
-                                        <h5>Profissionais Qualificados</h5>
-                                        <p class="mb-0">Todos verificados e avaliados</p>
-                                    </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">
+                                        Lembrar de mim
+                                    </label>
                                 </div>
+                                <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
                             </div>
-                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary" style="width: 60px; height: 60px;">
-                                        <i class="fa fa-check text-white"></i>
-                                    </div>
-                                    <div class="ms-3">
-                                        <h5>Garantia de Qualidade</h5>
-                                        <p class="mb-0">Serviços com garantia</p>
-                                    </div>
-                                </div>
+                            
+                            <button type="submit" class="btn btn-login w-100 mb-3">
+                                <i class="fas fa-sign-in-alt me-2"></i>Entrar
+                            </button>
+                        </form>
+                        
+                        <div class="text-center">
+                            <p class="mb-3">Não tem uma conta?</p>
+                            <div class="d-flex gap-2">
+                                <a href="#" class="btn btn-outline-primary flex-fill" onclick="showRegisterModal('cliente')">
+                                    <i class="fas fa-user-plus me-1"></i>Cliente
+                                </a>
+                                <a href="#" class="btn btn-outline-success flex-fill" onclick="showRegisterModal('prestador')">
+                                    <i class="fas fa-tools me-1"></i>Prestador
+                                </a>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <a href="marketing.html" class="text-decoration-none">
+                                    <i class="fas fa-info-circle me-1"></i>Saiba mais sobre nossos serviços
+                                </a>
                             </div>
                         </div>
-                        <a href="about.html" class="btn btn-primary py-3 px-5">Saiba Mais</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Contato</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>São Paulo, SP, Brasil</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+55 11 98765-4321</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>contato@servicoemcasa.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Serviços</h4>
-                    <a class="btn btn-link" href="services.html">Eletricista</a>
-                    <a class="btn btn-link" href="services.html">Encanador</a>
-                    <a class="btn btn-link" href="services.html">Pedreiro</a>
-                    <a class="btn btn-link" href="services.html">Pintor</a>
-                    <a class="btn btn-link" href="services.html">Limpeza</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Links Rápidos</h4>
-                    <a class="btn btn-link" href="about.html">Sobre Nós</a>
-                    <a class="btn btn-link" href="contact.html">Contato</a>
-                    <a class="btn btn-link" href="services.html">Nossos Serviços</a>
-                    <a class="btn btn-link" href="#">Política de Privacidade</a>
-                    <a class="btn btn-link" href="#">Termos & Condições</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Newsletter</h4>
-                    <p>Receba novidades e promoções especiais.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Seu email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Inscrever</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Serviço em Casa</a>, Todos os Direitos Reservados.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        Desenvolvido por <a class="border-bottom" href="#">Serviço em Casa Team</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/lib/wow/wow.min.js"></script>
     <script src="assets/lib/easing/easing.min.js"></script>
-    <script src="assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="assets/lib/counterup/counterup.min.js"></script>
-    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="assets/lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="assets/lib/lightbox/js/lightbox.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="assets/js/main.js"></script>
+    <!-- API Configuration -->
+    <script src="assets/js/api-config.js"></script>
+
+    <!-- Login Script -->
+    <script>
+        // User type selector
+        document.querySelectorAll('.user-type-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.user-type-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userType = document.querySelector('.user-type-btn.active').dataset.type;
+            
+            // Simulate login (replace with actual API call)
+            if (email && password) {
+                // Create user session
+                const userData = {
+                    isLoggedIn: true,
+                    username: email.split('@')[0],
+                    email: email,
+                    userType: userType,
+                    loginTime: new Date().toISOString()
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('userSession', JSON.stringify(userData));
+                
+                // Show success message
+                showMessage('Login realizado com sucesso!', 'success');
+                
+                // Redirect based on user type
+                setTimeout(() => {
+                    if (userType === 'admin') {
+                        window.location.href = 'home.html?panel=admin';
+                    } else if (userType === 'prestador') {
+                        window.location.href = 'home.html?panel=prestador';
+                    } else {
+                        window.location.href = 'home.html?panel=cliente';
+                    }
+                }, 1500);
+            }
+        });
+
+        // Show message function
+        function showMessage(message, type) {
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            const alert = document.createElement('div');
+            alert.className = `alert ${alertClass} alert-dismissible fade show position-fixed`;
+            alert.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            alert.innerHTML = `
+                <i class="${icon} me-2"></i>${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.parentNode.removeChild(alert);
+                }
+            }, 5000);
+        }
+
+        // Register modal function
+        function showRegisterModal(type) {
+            const typeLabel = type === 'cliente' ? 'Cliente' : 'Prestador';
+            const typeIcon = type === 'cliente' ? 'fas fa-user' : 'fas fa-tools';
+            
+            showMessage(`Cadastro de ${typeLabel} será implementado em breve!`, 'info');
+        }
+
+        // Check if already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                try {
+                    const userData = JSON.parse(userSession);
+                    if (userData.isLoggedIn) {
+                        // User is already logged in, redirect to appropriate panel
+                        if (userData.userType === 'admin') {
+                            window.location.href = 'home.html?panel=admin';
+                        } else if (userData.userType === 'prestador') {
+                            window.location.href = 'home.html?panel=prestador';
+                        } else {
+                            window.location.href = 'home.html?panel=cliente';
+                        }
+                    }
+                } catch (e) {
+                    console.error('Erro ao verificar sessão:', e);
+                    localStorage.removeItem('userSession');
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
