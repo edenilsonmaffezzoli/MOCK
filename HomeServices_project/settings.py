@@ -26,12 +26,12 @@ except ImportError:
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-p@o12h+fw!7=k6#l8o@6raux@y!g1u024bej^dd0%w!2$b@pn'
+SECRET_KEY = os.environ.get('SECRET_KEY', '-p@o12h+fw!7=k6#l8o@6raux@y!g1u024bej^dd0%w!2$b@pn')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver', '.railway.app', 'edenilsonmaffezzoli.github.io', '192.168.2.15']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver', '.railway.app', 'mock-production-0129.up.railway.app', 'edenilsonmaffezzoli.github.io', '192.168.2.15']
 
 # Adicionar hosts do Railway automaticamente
 if 'RAILWAY_STATIC_URL' in os.environ:
