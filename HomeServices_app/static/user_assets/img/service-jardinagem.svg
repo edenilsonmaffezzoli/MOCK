@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#228B22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#90EE90;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="potGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D2691E;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Flower pot -->
+  <polygon points="150,200 180,200 175,240 155,240" fill="url(#potGradient)"/>
+  <ellipse cx="165" cy="200" rx="15" ry="5" fill="#A0522D"/>
+  
+  <!-- Soil -->
+  <ellipse cx="165" cy="205" rx="12" ry="4" fill="#654321"/>
+  
+  <!-- Flower -->
+  <rect x="163" y="180" width="4" height="25" fill="#228B22"/>
+  <circle cx="165" cy="175" r="8" fill="#FF69B4"/>
+  <circle cx="165" cy="175" r="4" fill="#FFD700"/>
+  
+  <!-- Leaves -->
+  <ellipse cx="158" cy="185" rx="6" ry="3" fill="#32CD32" transform="rotate(-30 158 185)"/>
+  <ellipse cx="172" cy="185" rx="6" ry="3" fill="#32CD32" transform="rotate(30 172 185)"/>
+  
+  <!-- Watering can -->
+  <ellipse cx="280" cy="180" rx="20" ry="12" fill="#4682B4"/>
+  <rect x="260" y="170" width="40" height="20" fill="#4682B4" rx="5"/>
+  <rect x="300" y="175" width="25" height="6" fill="#4682B4" rx="3"/>
+  <rect x="270" y="160" width="8" height="15" fill="#4682B4" rx="2"/>
+  
+  <!-- Water drops -->
+  <ellipse cx="330" cy="185" rx="3" ry="5" fill="#87CEEB"/>
+  <ellipse cx="335" cy="190" rx="2" ry="4" fill="#87CEEB"/>
+  <ellipse cx="340" cy="195" rx="2" ry="3" fill="#87CEEB"/>
+  
+  <!-- Shovel -->
+  <rect x="100" y="120" width="6" height="80" fill="#8B4513" rx="2"/>
+  <ellipse cx="103" cy="115" rx="8" ry="12" fill="#C0C0C0"/>
+  
+  <!-- Rake -->
+  <rect x="320" y="100" width="6" height="70" fill="#8B4513" rx="2"/>
+  <rect x="315" y="95" width="16" height="8" fill="#C0C0C0" rx="2"/>
+  <!-- Rake teeth -->
+  <rect x="316" y="90" width="2" height="10" fill="#C0C0C0"/>
+  <rect x="319" y="90" width="2" height="10" fill="#C0C0C0"/>
+  <rect x="322" y="90" width="2" height="10" fill="#C0C0C0"/>
+  <rect x="325" y="90" width="2" height="10" fill="#C0C0C0"/>
+  <rect x="328" y="90" width="2" height="10" fill="#C0C0C0"/>
+  
+  <!-- Grass -->
+  <rect x="50" y="250" width="3" height="15" fill="#228B22"/>
+  <rect x="55" y="248" width="3" height="17" fill="#228B22"/>
+  <rect x="60" y="252" width="3" height="13" fill="#228B22"/>
+  <rect x="65" y="249" width="3" height="16" fill="#228B22"/>
+  <rect x="70" y="251" width="3" height="14" fill="#228B22"/>
+  
+  <rect x="200" y="250" width="3" height="15" fill="#228B22"/>
+  <rect x="205" y="248" width="3" height="17" fill="#228B22"/>
+  <rect x="210" y="252" width="3" height="13" fill="#228B22"/>
+  <rect x="215" y="249" width="3" height="16" fill="#228B22"/>
+  <rect x="220" y="251" width="3" height="14" fill="#228B22"/>
+  
+  <rect x="350" y="250" width="3" height="15" fill="#228B22"/>
+  <rect x="355" y="248" width="3" height="17" fill="#228B22"/>
+  <rect x="360" y="252" width="3" height="13" fill="#228B22"/>
+  <rect x="365" y="249" width="3" height="16" fill="#228B22"/>
+  <rect x="370" y="251" width="3" height="14" fill="#228B22"/>
+  
+  <!-- Sun -->
+  <circle cx="350" cy="50" r="20" fill="#FFD700"/>
+  <rect x="340" y="25" width="20" height="4" fill="#FFD700" rx="2"/>
+  <rect x="340" y="71" width="20" height="4" fill="#FFD700" rx="2"/>
+  <rect x="325" y="40" width="4" height="20" fill="#FFD700" rx="2"/>
+  <rect x="371" y="40" width="4" height="20" fill="#FFD700" rx="2"/>
+  
+  <!-- Title -->
+  <text x="200" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">
+    JARDINAGEM
+  </text>
+</svg>

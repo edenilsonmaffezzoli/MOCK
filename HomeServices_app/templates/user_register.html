@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            background-image: url('https://example.com/path/to/your/image.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4285f4;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: #555555;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-color: #cccccc;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label,
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #4285f4;
+            box-shadow: 0 0 0 0.2rem rgba(66, 133, 244, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #4285f4;
+            border-color: #4285f4;
+        }
+
+        .btn-primary:hover {
+            background-color: #357ae8;
+            border-color: #357ae8;
+        }
+    </style>
+    <title>Formulário de Cadastro de Usuário</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Formulário de Cadastro de Usuário</h1>
+        {{msg}}
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstname">Primeiro Nome:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastname">Sobrenome:</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="profile_pic">Foto de Perfil:</label>
+                <input type="file" class="form-control" id="profile_pic" name="profile_pic" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+
+            <div class="form-group">
+                <label for="contactnumber">Número de Contato:</label>
+                <input type="tel" class="form-control" id="contactnumber" name="contactnumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Endereço:</label>
+                <textarea class="form-control" id="address" name="address" rows="4" required></textarea>
+            </div>
+
+
+
+            <div class="form-group">
+                <label>Gênero:</label><br>
+                <select id="gender" class="form-control" name="gender"  id="gender" required>
+                    <option value="Male">Masculino</option>
+                    <option value="Female">Feminino</option>
+                    <option value="Other">Outro</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password">Definir Senha:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cpassword">Confirmar Senha:</label>
+                <input type="password" class="form-control" id="cpassword" name="cpassword" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+        <span>Já tem conta? <a href="{% url 'login' %}">Entrar</a></span>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery (required for Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{% extends "userpages/user_header_footer.html" %}
+{% block content %}
+{% load static %}
+
+<!-- Page Header -->
+<div class="container-fluid service-page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Serviços</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="{% url 'index' %}">Início</a></li>
+                <!-- <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li> -->
+                <li class="breadcrumb-item text-white active" aria-current="page">Serviços</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Service Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center">
+            <h1 class="display-5 mb-5">Nossos Serviços</h1>
+        </div>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.{{ forloop.counter0 }}s">
+                <div class="service-item">
+                    <div class="overflow-hidden">
+                        {% if service.img %}
+                            <img class="img-fluid" src="{{ service.img.url }}" alt="{{ service.Name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                        {% else %}
+                            {% if service.Name == "Eletricista" %}
+                                <img class="img-fluid" src="{% static 'user_assets/img/service-eletricista.svg' %}" alt="{{ service.Name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            {% elif service.Name == "Encanador" %}
+                                <img class="img-fluid" src="{% static 'user_assets/img/service-encanador.svg' %}" alt="{{ service.Name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            {% elif service.Name == "Pedreiro" %}
+                                <img class="img-fluid" src="{% static 'user_assets/img/service-pedreiro.svg' %}" alt="{{ service.Name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            {% elif service.Name == "Pintor" %}
+                                <img class="img-fluid" src="{% static 'user_assets/img/service-pintor.svg' %}" alt="{{ service.Name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            {% elif service.Name == "Limpeza Doméstica" or service.Name == "Limpeza" %}
+                                <img class="img-fluid" src="{% static 'user_assets/img/service-limpeza.svg' %}" alt="{{ service.Name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            {% elif service.Name == "Jardinagem" %}
+                                <img class="img-fluid" src="{% static 'user_assets/img/service-jardinagem.svg' %}" alt="{{ service.Name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            {% else %}
+                                <img class="img-fluid" src="{% static 'user_assets/img/default-service.svg' %}" alt="{{ service.Name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">{{ service.Name }}</h4>
+                        <p>{{ service.Description|truncatewords_html:20 }}</p>
+                        <a class="fw-medium" href="{% url 'bookservice' id=service.id %}">Agendar<i class="fa fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+    <!-- Service End -->
+
+
+    <!-- Quote Start -->
+
+    <!-- Quote End -->
+
+
+    <!-- Testimonial Start -->
+  
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="section-title text-center">
+                <h1 class="display-5 mb-5">Avaliações</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+                {% for feedback in feedbacks %}
+                <div class="testimonial-item text-center">
+                    <!-- Check if the user has a profile picture -->
+                    {% if feedback.User.profile_pic %}
+                    <img class="img-fluid bg-light p-2 mx-auto mb-3" src="{{ feedback.User.profile_pic.url }}" style="width: 90px; height: 90px;">
+                    {% else %}
+                    <!-- Display a default user icon -->
+                    <img class="img-fluid bg-light p-2 mx-auto mb-3" src="{% static 'user_assets/img/default_user_icon.jpg' %}" style="width: 90px; height: 90px;">
+                    {% endif %}
+                    <div class="testimonial-text text-center p-4">
+                        <p>{{ feedback.Description }}</p>
+                        <!-- <h5 class="mb-1">{{ feedback.user.username }}</h5> -->
+                        <h5 class="mb-1">{{ feedback.User.username }}</h5>
+                        <span class="fst-italic">{{ feedback.Employ.Name }}</span>
+                        <!-- <span class="fst-italic">{{ feedback.Employ.Name }}</span> -->
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+        
+    {% endblock %}

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Serviço em Casa - Entrar</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="login, entrar, serviços domésticos" name="keywords">
+    <meta content="Faça login na plataforma Serviço em Casa" name="description">
+
+    <!-- Favicon -->
+    <link href="assets/img/logo_servico_em_casa.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Login Styles -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            max-width: 120px;
+            height: auto;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+            margin-bottom: 15px;
+        }
+
+        .logo-container h2 {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .logo-container p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-control {
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            background: white;
+        }
+
+        .form-control::placeholder {
+            color: #adb5bd;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #adb5bd;
+            z-index: 10;
+        }
+
+        .form-control.with-icon {
+            padding-left: 50px;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        .login-links {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .login-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .login-links a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e1e5e9;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .register-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .register-section h5 {
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .btn-register {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+            border-radius: 8px;
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-register:hover {
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 576px) {
+            .login-container {
+                margin: 20px;
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- Logo e Título -->
+        <div class="logo-container">
+            <img src="assets/img/logo_servico_em_casa.png" alt="Serviço em Casa">
+            <h2>Serviço em Casa</h2>
+            <p>Conectamos você aos melhores profissionais</p>
+        </div>
+
+        <!-- Mensagem de Erro (se houver) -->
+        <div class="error-message" style="display: none;" id="error-message">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <span id="error-text">Usuário ou senha incorretos</span>
+        </div>
+
+        <!-- Formulário de Login -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" class="form-control with-icon" placeholder="Nome de usuário" name="username" id="username" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" class="form-control with-icon" placeholder="Senha" name="password" id="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-login">
+                <i class="fas fa-sign-in-alt me-2"></i>
+                Entrar
+            </button>
+        </form>
+
+        <!-- Credenciais de Demonstração -->
+        <div class="demo-credentials" style="background: #e3f2fd; border: 1px solid #2196f3; border-radius: 8px; padding: 15px; margin: 15px 0; font-size: 14px;">
+            <h6 style="color: #1976d2; margin-bottom: 10px;">
+                <i class="fas fa-info-circle me-1"></i>
+                Credenciais de Demonstração
+            </h6>
+            <div style="color: #424242;">
+                <strong>Cliente:</strong> cliente_demo / demo123<br>
+                <strong>Prestador:</strong> prestador_demo / demo123<br>
+                <strong>Admin:</strong> admin_demo / admin123
+            </div>
+        </div>
+
+        <!-- Links de Recuperação -->
+        <div class="login-links">
+            <a href="#" onclick="showForgotPassword()">
+                <i class="fas fa-key me-1"></i>
+                Esqueceu a senha?
+            </a>
+        </div>
+
+        <!-- Seção de Registro -->
+        <div class="register-section">
+            <h5>Não tem conta?</h5>
+            <a href="#" class="btn-register" onclick="showUserRegister()">
+                <i class="fas fa-user-plus me-1"></i>
+                Registrar como Cliente
+            </a>
+            <br>
+            <a href="#" class="btn-register" onclick="showWorkerRegister()">
+                <i class="fas fa-tools me-1"></i>
+                Registrar como Prestador
+            </a>
+        </div>
+
+        <!-- Link para visualizar o site -->
+        <div class="divider">
+            <span>ou</span>
+        </div>
+        
+        <div class="text-center">
+            <a href="home.html" class="btn-register" style="display: inline-block; margin-top: 10px;">
+                <i class="fas fa-home me-1"></i>
+                Visualizar Site
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Verificar se o usuário já está logado ao carregar a página
+        window.addEventListener('DOMContentLoaded', function() {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                const userData = JSON.parse(userSession);
+                showMessage(`Bem-vindo de volta, ${userData.username}! Redirecionando...`, 'success');
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 1500);
+            }
+        });
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                showMessage('Por favor, preencha todos os campos.', 'error');
+                return;
+            }
+
+            // Para GitHub Pages - simulação de login para demonstração
+            // Em produção, isso seria conectado a um backend real
+            
+            // Simulação de credenciais para demonstração
+            const validCredentials = {
+                'cliente_demo': { password: 'demo123', type: 'cliente' },
+                'prestador_demo': { password: 'demo123', type: 'prestador' },
+                'admin_demo': { password: 'admin123', type: 'admin' }
+            };
+
+            // Simular delay de rede
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            if (validCredentials[username] && validCredentials[username].password === password) {
+                // Login bem-sucedido
+                const userType = validCredentials[username].type;
+                
+                // Salvar dados da sessão
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('username', username);
+                sessionStorage.setItem('userType', userType);
+
+                showMessage(`Login realizado como ${userType.toUpperCase()}!`, 'success');
+
+                // Determinar URL de redirecionamento
+                let redirectUrl;
+                if (userType === 'prestador') {
+                    redirectUrl = 'services.html?panel=prestador';
+                } else if (userType === 'admin') {
+                    redirectUrl = 'about.html?panel=admin';
+                } else {
+                    redirectUrl = 'home.html?panel=cliente';
+                }
+
+                console.log('Redirecionando para:', redirectUrl);
+                
+                // Redirecionar após 2 segundos
+                setTimeout(() => {
+                    window.location.href = redirectUrl;
+                }, 2000);
+            } else {
+                showMessage('Credenciais inválidas. Use: cliente_demo/demo123, prestador_demo/demo123 ou admin_demo/admin123', 'error');
+            }
+        }
+
+        function showMessage(message, type) {
+            const errorDiv = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            
+            errorText.textContent = message;
+            
+            if (type === 'success') {
+                errorDiv.style.background = '#d4edda';
+                errorDiv.style.color = '#155724';
+                errorDiv.style.borderColor = '#c3e6cb';
+            } else {
+                errorDiv.style.background = '#f8d7da';
+                errorDiv.style.color = '#721c24';
+                errorDiv.style.borderColor = '#f5c6cb';
+            }
+            
+            errorDiv.style.display = 'block';
+            
+            if (type === 'error') {
+                setTimeout(() => {
+                    errorDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function showForgotPassword() {
+            alert('Funcionalidade de recuperação de senha será implementada em breve.\n\nPor enquanto, entre em contato conosco:\n📞 +55 11 98765-4321\n📧 contato@servicoemcasa.com');
+        }
+
+        function showUserRegister() {
+            alert('Registro de cliente será implementado em breve.\n\nPor enquanto, entre em contato conosco:\n📞 +55 11 98765-4321\n📧 contato@servicoemcasa.com');
+        }
+
+        function showWorkerRegister() {
+            alert('Registro de prestador será implementado em breve.\n\nPor enquanto, entre em contato conosco:\n📞 +55 11 98765-4321\n📧 contato@servicoemcasa.com');
+        }
+
+        // Adicionar efeito de foco nos inputs
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('.input-icon').style.color = '#667eea';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.querySelector('.input-icon').style.color = '#adb5bd';
+            });
+        });
+    </script>
+</body>
+
+</html>
