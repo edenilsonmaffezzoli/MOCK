@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login - Serviço em Casa</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="login, serviços domésticos, eletricista, encanador, pedreiro, pintor, limpeza, jardinagem" name="keywords">
+    <meta content="Faça login na plataforma de serviços domésticos com profissionais qualificados" name="description">
+
+    <!-- Favicon -->
+    <link href="assets/img/logo_servico_em_casa.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="assets/lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+        .login-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+            margin: 20px;
+        }
+        
+        .login-left {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .login-right {
+            padding: 60px 40px;
+        }
+        
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+        
+        .user-type-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .user-type-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .user-type-btn.active {
+            border-color: #667eea;
+            background: #f8f9ff;
+            color: #667eea;
+        }
+        
+        .user-type-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .logo-section {
+            margin-bottom: 30px;
+        }
+        
+        .logo-section img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="row g-0">
+                <!-- Left Side - Branding -->
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="login-left">
+                        <div class="logo-section">
+                            <img src="assets/img/logo_servico_em_casa.png" alt="Serviço em Casa" class="mb-3">
+                            <h2 class="fw-bold">Serviço em Casa</h2>
+                            <p class="mb-4">Conectamos você aos melhores profissionais</p>
+                        </div>
+                        
+                        <div class="features">
+                            <div class="feature-item mb-4">
+                                <i class="fas fa-shield-alt fa-2x mb-3"></i>
+                                <h5>Profissionais Verificados</h5>
+                                <p>Todos os prestadores passam por verificação rigorosa</p>
+                            </div>
+                            
+                            <div class="feature-item mb-4">
+                                <i class="fas fa-clock fa-2x mb-3"></i>
+                                <h5>Atendimento Rápido</h5>
+                                <p>Encontre profissionais disponíveis na sua região</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-star fa-2x mb-3"></i>
+                                <h5>Qualidade Garantida</h5>
+                                <p>Avaliações reais de clientes satisfeitos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Login Form -->
+                <div class="col-lg-6">
+                    <div class="login-right">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold text-dark">Bem-vindo de volta!</h3>
+                            <p class="text-muted">Faça login para acessar sua conta</p>
+                        </div>
+                        
+                        <!-- User Type Selector -->
+                        <div class="user-type-selector">
+                            <div class="user-type-btn active" data-type="cliente">
+                                <i class="fas fa-user fa-2x mb-2 d-block"></i>
+                                <strong>Cliente</strong>
+                                <small class="d-block text-muted">Contratar serviços</small>
+                            </div>
+                            <div class="user-type-btn" data-type="prestador">
+                                <i class="fas fa-tools fa-2x mb-2 d-block"></i>
+                                <strong>Prestador</strong>
+                                <small class="d-block text-muted">Oferecer serviços</small>
+                            </div>
+                            <div class="user-type-btn" data-type="admin">
+                                <i class="fas fa-crown fa-2x mb-2 d-block"></i>
+                                <strong>Admin</strong>
+                                <small class="d-block text-muted">Gerenciar sistema</small>
+                            </div>
+                        </div>
+                        
+                        <!-- Login Form -->
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="password" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="password" placeholder="Sua senha" required>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">
+                                        Lembrar de mim
+                                    </label>
+                                </div>
+                                <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-login w-100 mb-3">
+                                <i class="fas fa-sign-in-alt me-2"></i>Entrar
+                            </button>
+                        </form>
+                        
+                        <div class="text-center">
+                            <p class="mb-3">Não tem uma conta?</p>
+                            <div class="d-flex gap-2">
+                                <a href="#" class="btn btn-outline-primary flex-fill" onclick="showRegisterModal('cliente')">
+                                    <i class="fas fa-user-plus me-1"></i>Cliente
+                                </a>
+                                <a href="#" class="btn btn-outline-success flex-fill" onclick="showRegisterModal('prestador')">
+                                    <i class="fas fa-tools me-1"></i>Prestador
+                                </a>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <a href="marketing.html" class="text-decoration-none">
+                                    <i class="fas fa-info-circle me-1"></i>Saiba mais sobre nossos serviços
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/lib/wow/wow.min.js"></script>
+    <script src="assets/lib/easing/easing.min.js"></script>
+
+    <!-- API Configuration -->
+    <script src="assets/js/api-config.js"></script>
+
+    <!-- Login Script -->
+    <script>
+        // User type selector
+        document.querySelectorAll('.user-type-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.user-type-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userType = document.querySelector('.user-type-btn.active').dataset.type;
+            
+            // Simulate login (replace with actual API call)
+            if (email && password) {
+                // Create user session
+                const userData = {
+                    isLoggedIn: true,
+                    username: email.split('@')[0],
+                    email: email,
+                    userType: userType,
+                    loginTime: new Date().toISOString()
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('userSession', JSON.stringify(userData));
+                
+                // Show success message
+                showMessage('Login realizado com sucesso!', 'success');
+                
+                // Redirect based on user type
+                setTimeout(() => {
+                    if (userType === 'admin') {
+                        window.location.href = 'home.html?panel=admin';
+                    } else if (userType === 'prestador') {
+                        window.location.href = 'home.html?panel=prestador';
+                    } else {
+                        window.location.href = 'home.html?panel=cliente';
+                    }
+                }, 1500);
+            }
+        });
+
+        // Show message function
+        function showMessage(message, type) {
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            const alert = document.createElement('div');
+            alert.className = `alert ${alertClass} alert-dismissible fade show position-fixed`;
+            alert.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            alert.innerHTML = `
+                <i class="${icon} me-2"></i>${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.parentNode.removeChild(alert);
+                }
+            }, 5000);
+        }
+
+        // Register modal function
+        function showRegisterModal(type) {
+            const typeLabel = type === 'cliente' ? 'Cliente' : 'Prestador';
+            const typeIcon = type === 'cliente' ? 'fas fa-user' : 'fas fa-tools';
+            
+            showMessage(`Cadastro de ${typeLabel} será implementado em breve!`, 'info');
+        }
+
+        // Check if already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const userSession = localStorage.getItem('userSession');
+            if (userSession) {
+                try {
+                    const userData = JSON.parse(userSession);
+                    if (userData.isLoggedIn) {
+                        // User is already logged in, redirect to appropriate panel
+                        if (userData.userType === 'admin') {
+                            window.location.href = 'home.html?panel=admin';
+                        } else if (userData.userType === 'prestador') {
+                            window.location.href = 'home.html?panel=prestador';
+                        } else {
+                            window.location.href = 'home.html?panel=cliente';
+                        }
+                    }
+                } catch (e) {
+                    console.error('Erro ao verificar sessão:', e);
+                    localStorage.removeItem('userSession');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

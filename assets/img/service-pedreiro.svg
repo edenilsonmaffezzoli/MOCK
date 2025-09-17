@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D2691E;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="brickGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#CD853F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Brick wall -->
+  <!-- Row 1 -->
+  <rect x="50" y="150" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="115" y="150" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="180" y="150" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="245" y="150" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="310" y="150" width="40" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  
+  <!-- Row 2 -->
+  <rect x="50" y="180" width="30" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="85" y="180" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="150" y="180" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="215" y="180" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="280" y="180" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  
+  <!-- Row 3 -->
+  <rect x="50" y="210" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="115" y="210" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="180" y="210" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="245" y="210" width="60" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  <rect x="310" y="210" width="40" height="25" fill="url(#brickGradient)" stroke="#8B4513" stroke-width="1"/>
+  
+  <!-- Trowel -->
+  <polygon points="120,80 140,100 160,80 150,70 130,70" fill="#C0C0C0" stroke="#808080" stroke-width="2"/>
+  <rect x="145" y="70" width="8" height="40" fill="#8B4513" rx="2"/>
+  
+  <!-- Hammer -->
+  <rect x="250" y="90" width="40" height="12" fill="#C0C0C0" rx="2"/>
+  <rect x="265" y="85" width="10" height="22" fill="#C0C0C0"/>
+  <rect x="275" y="102" width="8" height="30" fill="#8B4513" rx="2"/>
+  
+  <!-- Cement bucket -->
+  <ellipse cx="320" cy="120" rx="25" ry="8" fill="#D3D3D3"/>
+  <rect x="295" y="100" width="50" height="20" fill="#D3D3D3"/>
+  <ellipse cx="320" cy="100" rx="25" ry="8" fill="#F5F5F5"/>
+  
+  <!-- Mortar -->
+  <ellipse cx="320" cy="105" rx="20" ry="6" fill="#A0A0A0"/>
+  
+  <!-- Title -->
+  <text x="200" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">
+    PEDREIRO
+  </text>
+</svg>

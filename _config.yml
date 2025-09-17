@@ -1,0 +1,62 @@
+# Configuração do GitHub Pages para Serviço em Casa
+
+# Informações do site
+title: "Serviço em Casa"
+description: "Conectamos você aos melhores profissionais de serviços domésticos"
+url: "https://edenilsonmaffezzoli.github.io/Home_Service_Django_Project"
+baseurl: ""
+
+# Configurações do GitHub Pages
+theme: null
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Configurações de build
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Configurações de exclusão
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+
+# Configurações de inclusão
+include:
+  - _pages
+
+# Configurações de SEO
+lang: pt-BR
+author: "Serviço em Casa"
+
+# Configurações de redes sociais
+social:
+  facebook: "servicoemcasa"
+  twitter: "servicoemcasa"
+  instagram: "servicoemcasa"
+  linkedin: "servicoemcasa"
+
+# Configurações de contato
+contact:
+  phone: "+55 11 98765-4321"
+  email: "contato@servicoemcasa.com"
+  address: "123 São Paulo, SP, Brasil"
+
+# Configurações de navegação
+navigation:
+  - title: "Início"
+    url: "/Home_Service_Django_Project/index.html"
+  - title: "Sobre"
+    url: "/Home_Service_Django_Project/about.html"
+  - title: "Serviços"
+    url: "/Home_Service_Django_Project/services.html"
+  - title: "Contato"
+    url: "/Home_Service_Django_Project/contact.html"
