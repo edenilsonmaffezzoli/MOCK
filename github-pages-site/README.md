@@ -2,6 +2,8 @@
 
 Este é o site estático do projeto "Serviço em Casa", preparado para hospedagem no GitHub Pages.
 
+🔄 **Status**: Site atualizado e funcionando
+
 ## 📋 Sobre o Projeto
 
 O Serviço em Casa é uma plataforma que conecta clientes a profissionais qualificados para serviços domésticos, incluindo:
