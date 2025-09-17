@@ -4,7 +4,7 @@
 title: "Serviço em Casa"
 description: "Conectamos você aos melhores profissionais de serviços domésticos"
 url: "https://edenilsonmaffezzoli.github.io"
-baseurl: "/MOCK"
+baseurl: "/Home_Service_Django_Project"
 
 # Configurações do GitHub Pages
 theme: null
@@ -53,10 +53,10 @@ contact:
 # Configurações de navegação
 navigation:
   - title: "Início"
-    url: "/MOCK/index.html"
+    url: "/Home_Service_Django_Project/index.html"
   - title: "Sobre"
-    url: "/MOCK/about.html"
+    url: "/Home_Service_Django_Project/about.html"
   - title: "Serviços"
-    url: "/MOCK/services.html"
+    url: "/Home_Service_Django_Project/services.html"
   - title: "Contato"
-    url: "/MOCK/contact.html"
+    url: "/Home_Service_Django_Project/contact.html"

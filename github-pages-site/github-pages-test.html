@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste GitHub Pages - Serviço em Casa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .status-success { background-color: #28a745; }
+        .status-error { background-color: #dc3545; }
+        .status-warning { background-color: #ffc107; }
+        .test-card {
+            margin-bottom: 20px;
+            border-left: 4px solid #007bff;
+        }
+        .log-container {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-globe"></i>
+                    Teste de Conectividade GitHub Pages
+                </h1>
+                
+                <!-- Status Geral -->
+                <div class="card test-card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-info-circle"></i> Status da Conexão</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="connection-status">
+                            <span class="status-indicator status-warning"></span>
+                            Verificando conectividade...
+                        </div>
+                        <div class="mt-2">
+                            <strong>Ambiente:</strong> <span id="environment-info">Detectando...</span>
+                        </div>
+                        <div class="mt-2">
+                            <strong>URL Base da API:</strong> <span id="api-base-url">Carregando...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testes de Endpoints -->
+                <div class="card test-card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-network-wired"></i> Testes de Endpoints</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary mb-3" onclick="testHealthEndpoint()">
+                                    <i class="fas fa-heartbeat"></i> Testar Health Check
+                                </button>
+                                <div id="health-result"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-info mb-3" onclick="testCORSHeaders()">
+                                    <i class="fas fa-shield-alt"></i> Verificar CORS
+                                </button>
+                                <div id="cors-result"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <button class="btn btn-success mb-3" onclick="testServicesEndpoint()">
+                                    <i class="fas fa-tools"></i> Testar Serviços
+                                </button>
+                                <div id="services-result"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-warning mb-3" onclick="testAllEndpoints()">
+                                    <i class="fas fa-play-circle"></i> Testar Todos
+                                </button>
+                                <div id="all-tests-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Log de Diagnóstico -->
+                <div class="card test-card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-bug"></i> Log de Diagnóstico</h5>
+                        <button class="btn btn-sm btn-outline-secondary float-end" onclick="clearLog()">
+                            <i class="fas fa-trash"></i> Limpar
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="diagnostic-log" class="log-container">
+                            Aguardando testes...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informações do GitHub Pages -->
+                <div class="card test-card">
+                    <div class="card-header">
+                        <h5><i class="fab fa-github"></i> Informações do GitHub Pages</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>URL Atual:</strong><br>
+                                <code id="current-url"></code>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Hostname:</strong><br>
+                                <code id="hostname"></code>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <strong>Protocol:</strong><br>
+                                <code id="protocol"></code>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>User Agent:</strong><br>
+                                <code id="user-agent" style="font-size: 10px;"></code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/api-config.js"></script>
+    <script>
+        let logContainer;
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${type.toUpperCase()}: ${message}\n`;
+            logContainer.textContent += logEntry;
+            logContainer.scrollTop = logContainer.scrollHeight;
+            console.log(`GitHub Pages Test - ${logEntry.trim()}`);
+        }
+
+        function clearLog() {
+            logContainer.textContent = 'Log limpo...\n';
+        }
+
+        function updateStatus(elementId, success, message) {
+            const element = document.getElementById(elementId);
+            const statusClass = success ? 'status-success' : 'status-error';
+            element.innerHTML = `<span class="status-indicator ${statusClass}"></span>${message}`;
+        }
+
+        async function testHealthEndpoint() {
+            log('Iniciando teste do Health Check endpoint...');
+            try {
+                const response = await fetch(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.HEALTH}`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus('health-result', true, 'Health Check OK');
+                    log(`Health Check sucesso: ${JSON.stringify(data)}`);
+                } else {
+                    updateStatus('health-result', false, `Erro HTTP: ${response.status}`);
+                    log(`Health Check falhou: ${response.status} - ${response.statusText}`, 'error');
+                }
+            } catch (error) {
+                updateStatus('health-result', false, `Erro: ${error.message}`);
+                log(`Erro no Health Check: ${error.message}`, 'error');
+            }
+        }
+
+        async function testCORSHeaders() {
+            log('Verificando configurações CORS...');
+            try {
+                const response = await fetch(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.HEALTH}`, {
+                    method: 'OPTIONS',
+                    mode: 'cors'
+                });
+
+                const corsHeaders = {
+                    'Access-Control-Allow-Origin': response.headers.get('Access-Control-Allow-Origin'),
+                    'Access-Control-Allow-Methods': response.headers.get('Access-Control-Allow-Methods'),
+                    'Access-Control-Allow-Headers': response.headers.get('Access-Control-Allow-Headers')
+                };
+
+                updateStatus('cors-result', true, 'CORS configurado');
+                log(`Headers CORS: ${JSON.stringify(corsHeaders, null, 2)}`);
+            } catch (error) {
+                updateStatus('cors-result', false, `Erro CORS: ${error.message}`);
+                log(`Erro CORS: ${error.message}`, 'error');
+            }
+        }
+
+        async function testServicesEndpoint() {
+            log('Testando endpoint de serviços...');
+            try {
+                const response = await fetch(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.SERVICES}`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus('services-result', true, `${data.length || 0} serviços encontrados`);
+                    log(`Serviços carregados: ${data.length || 0} itens`);
+                } else {
+                    updateStatus('services-result', false, `Erro HTTP: ${response.status}`);
+                    log(`Erro nos serviços: ${response.status} - ${response.statusText}`, 'error');
+                }
+            } catch (error) {
+                updateStatus('services-result', false, `Erro: ${error.message}`);
+                log(`Erro nos serviços: ${error.message}`, 'error');
+            }
+        }
+
+        async function testAllEndpoints() {
+            log('Iniciando teste completo de todos os endpoints...');
+            updateStatus('all-tests-result', false, 'Testando...');
+            
+            let successCount = 0;
+            let totalTests = 0;
+
+            const endpoints = [
+                { name: 'Health', url: API_CONFIG.ENDPOINTS.HEALTH },
+                { name: 'Services', url: API_CONFIG.ENDPOINTS.SERVICES },
+                { name: 'Service Categories', url: API_CONFIG.ENDPOINTS.SERVICE_CATEGORIES }
+            ];
+
+            for (const endpoint of endpoints) {
+                totalTests++;
+                try {
+                    log(`Testando ${endpoint.name}...`);
+                    const response = await fetch(`${API_CONFIG.BASE_URL}${endpoint.url}`, {
+                        method: 'GET',
+                        mode: 'cors',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        successCount++;
+                        log(`✓ ${endpoint.name}: OK`);
+                    } else {
+                        log(`✗ ${endpoint.name}: ${response.status}`, 'error');
+                    }
+                } catch (error) {
+                    log(`✗ ${endpoint.name}: ${error.message}`, 'error');
+                }
+            }
+
+            const success = successCount === totalTests;
+            updateStatus('all-tests-result', success, `${successCount}/${totalTests} testes passaram`);
+            log(`Teste completo finalizado: ${successCount}/${totalTests} sucessos`);
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            logContainer = document.getElementById('diagnostic-log');
+            
+            // Informações do ambiente
+            document.getElementById('current-url').textContent = window.location.href;
+            document.getElementById('hostname').textContent = window.location.hostname;
+            document.getElementById('protocol').textContent = window.location.protocol;
+            document.getElementById('user-agent').textContent = navigator.userAgent;
+
+            // Detectar ambiente
+            const hostname = window.location.hostname;
+            let environment = 'Desconhecido';
+            
+            if (hostname === 'localhost' || hostname === '127.0.0.1') {
+                environment = 'Desenvolvimento Local';
+            } else if (hostname === 'edenilsonmaffezzoli.github.io') {
+                environment = 'GitHub Pages';
+            } else {
+                environment = 'Produção';
+            }
+
+            document.getElementById('environment-info').textContent = environment;
+            document.getElementById('api-base-url').textContent = API_CONFIG.BASE_URL;
+
+            // Status inicial
+            if (typeof API_CONFIG !== 'undefined') {
+                updateStatus('connection-status', true, 'Configuração da API carregada');
+                log('Configuração da API carregada com sucesso');
+                log(`Ambiente detectado: ${environment}`);
+                log(`URL base da API: ${API_CONFIG.BASE_URL}`);
+            } else {
+                updateStatus('connection-status', false, 'Erro ao carregar configuração da API');
+                log('Erro: Configuração da API não encontrada', 'error');
+            }
+        });
+    </script>
+</body>
+</html>

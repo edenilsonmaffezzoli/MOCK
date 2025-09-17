@@ -6,18 +6,34 @@
 // Configuração da API
 const API_CONFIG = {
     // Detecta automaticamente o ambiente
-    BASE_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-        ? 'http://127.0.0.1:8000'  // Desenvolvimento local
-        : 'https://web-production-b793800f.up.railway.app', // Produção Railway
+    BASE_URL: (() => {
+        const hostname = window.location.hostname;
+        
+        // Desenvolvimento local
+        if (hostname === 'localhost' || hostname === '127.0.0.1') {
+            return 'http://localhost:8000';
+        }
+        
+        // GitHub Pages
+        if (hostname === 'edenilsonmaffezzoli.github.io') {
+            return 'https://web-production-b793800f.up.railway.app';
+        }
+        
+        // Produção Railway (fallback)
+        return 'https://web-production-b793800f.up.railway.app';
+    })(),
     ENDPOINTS: {
         // Autenticação
-        LOGIN: '/api/auth/login/',
-        LOGOUT: '/api/auth/logout/',
-        REGISTER: '/api/auth/register/',
+        LOGIN: '/api/login/',
+        LOGOUT: '/api/logout/',
+        REGISTER: '/api/register/',
         
         // Serviços
         SERVICES: '/api/services/',
         SERVICE_CATEGORIES: '/api/services/categories/',
+        
+        // Health Check
+        HEALTH: '/api/health/',
         
         // Usuários
         USERS: '/api/users/',

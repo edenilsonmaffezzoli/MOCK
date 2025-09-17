@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Integração Frontend-Backend</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .test-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            background-color: #f8f9fa;
+        }
+        .result-box {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-success { background-color: #28a745; }
+        .status-error { background-color: #dc3545; }
+        .status-warning { background-color: #ffc107; }
+        .status-info { background-color: #17a2b8; }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-plug me-2"></i>
+                    Teste de Integração Frontend-Backend
+                </h1>
+                
+                <!-- Status da Conexão -->
+                <div class="test-section">
+                    <h3><i class="fas fa-wifi me-2"></i>Status da Conexão</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Frontend URL:</strong> <span id="frontend-url"></span></p>
+                            <p><strong>Backend URL:</strong> <span id="backend-url"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Status Backend:</strong> <span id="backend-status">Verificando...</span></p>
+                            <p><strong>CORS Status:</strong> <span id="cors-status">Verificando...</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endpoints Disponíveis -->
+                <div class="test-section">
+                    <h3><i class="fas fa-list me-2"></i>Endpoints Disponíveis</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>Autenticação</h5>
+                            <ul class="list-unstyled">
+                                <li><code>POST /api/login/</code></li>
+                                <li><code>POST /api/logout/</code></li>
+                                <li><code>POST /api/register/</code></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Serviços</h5>
+                            <ul class="list-unstyled">
+                                <li><code>GET /api/services/</code></li>
+                                <li><code>GET /api/services/categories/</code></li>
+                                <li><code>GET /api/workers/</code></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>Outros</h5>
+                            <ul class="list-unstyled">
+                                <li><code>POST /api/contact/</code></li>
+                                <li><code>GET /api/health/</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testes de API -->
+                <div class="test-section">
+                    <h3><i class="fas fa-flask me-2"></i>Testes de API</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-primary w-100" onclick="testHealthCheck()">
+                                <i class="fas fa-heartbeat me-2"></i>Testar Health Check
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-success w-100" onclick="testServices()">
+                                <i class="fas fa-tools me-2"></i>Testar Serviços
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-info w-100" onclick="testCategories()">
+                                <i class="fas fa-tags me-2"></i>Testar Categorias
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-warning w-100" onclick="testWorkers()">
+                                <i class="fas fa-users me-2"></i>Testar Trabalhadores
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-secondary w-100" onclick="testContact()">
+                                <i class="fas fa-envelope me-2"></i>Testar Contato
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-danger w-100" onclick="testCORS()">
+                                <i class="fas fa-shield-alt me-2"></i>Testar CORS
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <button class="btn btn-dark" onclick="runAllTests()">
+                            <i class="fas fa-play me-2"></i>Executar Todos os Testes
+                        </button>
+                        <button class="btn btn-outline-secondary ms-2" onclick="clearResults()">
+                            <i class="fas fa-trash me-2"></i>Limpar Resultados
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                <div class="test-section">
+                    <h3><i class="fas fa-chart-line me-2"></i>Resultados dos Testes</h3>
+                    <div id="test-results" class="result-box">
+                        <p class="text-muted">Nenhum teste executado ainda. Clique nos botões acima para testar a integração.</p>
+                    </div>
+                </div>
+
+                <!-- Diagnóstico -->
+                <div class="test-section">
+                    <h3><i class="fas fa-stethoscope me-2"></i>Diagnóstico</h3>
+                    <div id="diagnostic-info" class="result-box">
+                        <p class="text-muted">Execute os testes para ver informações de diagnóstico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/api-config.js"></script>
+    <script>
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            updateConnectionInfo();
+            checkBackendStatus();
+        });
+
+        function updateConnectionInfo() {
+            document.getElementById('frontend-url').textContent = window.location.origin;
+            document.getElementById('backend-url').textContent = API_CONFIG.BASE_URL;
+        }
+
+        async function checkBackendStatus() {
+            try {
+                const response = await fetch(`${API_CONFIG.BASE_URL}/api/health/`);
+                if (response.ok) {
+                    document.getElementById('backend-status').innerHTML = 
+                        '<span class="status-indicator status-success"></span>Online';
+                    document.getElementById('cors-status').innerHTML = 
+                        '<span class="status-indicator status-success"></span>Funcionando';
+                } else {
+                    throw new Error('Backend não respondeu corretamente');
+                }
+            } catch (error) {
+                document.getElementById('backend-status').innerHTML = 
+                    '<span class="status-indicator status-error"></span>Offline';
+                document.getElementById('cors-status').innerHTML = 
+                    '<span class="status-indicator status-error"></span>Erro de CORS';
+                addResult('Erro de Conexão', `Não foi possível conectar ao backend: ${error.message}`, 'error');
+            }
+        }
+
+        async function testHealthCheck() {
+            addResult('Health Check', 'Testando...', 'info');
+            try {
+                const response = await apiClient.get('/api/health/');
+                addResult('Health Check', JSON.stringify(response, null, 2), 'success');
+            } catch (error) {
+                addResult('Health Check', `Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function testServices() {
+            addResult('Serviços', 'Testando...', 'info');
+            try {
+                const response = await apiClient.get('/api/services/');
+                addResult('Serviços', JSON.stringify(response, null, 2), 'success');
+            } catch (error) {
+                addResult('Serviços', `Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function testCategories() {
+            addResult('Categorias', 'Testando...', 'info');
+            try {
+                const response = await apiClient.get('/api/services/categories/');
+                addResult('Categorias', JSON.stringify(response, null, 2), 'success');
+            } catch (error) {
+                addResult('Categorias', `Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function testWorkers() {
+            addResult('Trabalhadores', 'Testando...', 'info');
+            try {
+                const response = await apiClient.get('/api/workers/');
+                addResult('Trabalhadores', JSON.stringify(response, null, 2), 'success');
+            } catch (error) {
+                addResult('Trabalhadores', `Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function testContact() {
+            addResult('Contato', 'Testando...', 'info');
+            try {
+                const testData = {
+                    name: 'Teste Frontend',
+                    email: 'teste@frontend.com',
+                    subject: 'Teste de Integração',
+                    message: 'Este é um teste de integração frontend-backend'
+                };
+                const response = await apiClient.post('/api/contact/', testData);
+                addResult('Contato', JSON.stringify(response, null, 2), 'success');
+            } catch (error) {
+                addResult('Contato', `Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function testCORS() {
+            addResult('CORS', 'Testando...', 'info');
+            try {
+                const response = await fetch(`${API_CONFIG.BASE_URL}/api/health/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Origin': window.location.origin
+                    }
+                });
+                
+                if (response.ok) {
+                    addResult('CORS', 'CORS configurado corretamente! ✅', 'success');
+                } else {
+                    addResult('CORS', `Erro de CORS: Status ${response.status}`, 'error');
+                }
+            } catch (error) {
+                if (error.message.includes('CORS')) {
+                    addResult('CORS', `Erro de CORS: ${error.message}`, 'error');
+                } else {
+                    addResult('CORS', `Erro de rede: ${error.message}`, 'warning');
+                }
+            }
+        }
+
+        async function runAllTests() {
+            clearResults();
+            addResult('Teste Completo', 'Iniciando bateria de testes...', 'info');
+            
+            await testHealthCheck();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testServices();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testCategories();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testWorkers();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testCORS();
+            
+            addResult('Teste Completo', 'Todos os testes executados!', 'success');
+            updateDiagnostic();
+        }
+
+        function addResult(title, content, type) {
+            const resultsDiv = document.getElementById('test-results');
+            const timestamp = new Date().toLocaleTimeString();
+            
+            const statusClass = `status-${type}`;
+            const resultHtml = `
+                <div class="mb-3 p-3 border-start border-3 border-${type === 'success' ? 'success' : type === 'error' ? 'danger' : type === 'warning' ? 'warning' : 'info'}">
+                    <h6 class="mb-2">
+                        <span class="status-indicator ${statusClass}"></span>
+                        ${title} <small class="text-muted">(${timestamp})</small>
+                    </h6>
+                    <pre class="mb-0" style="white-space: pre-wrap; font-size: 0.9em;">${content}</pre>
+                </div>
+            `;
+            
+            if (resultsDiv.innerHTML.includes('Nenhum teste executado')) {
+                resultsDiv.innerHTML = resultHtml;
+            } else {
+                resultsDiv.innerHTML += resultHtml;
+            }
+            
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('test-results').innerHTML = 
+                '<p class="text-muted">Nenhum teste executado ainda. Clique nos botões acima para testar a integração.</p>';
+        }
+
+        function updateDiagnostic() {
+            const diagnostic = `
+                <h6>Informações do Sistema:</h6>
+                <ul>
+                    <li><strong>Frontend:</strong> ${window.location.origin}</li>
+                    <li><strong>Backend:</strong> ${API_CONFIG.BASE_URL}</li>
+                    <li><strong>User Agent:</strong> ${navigator.userAgent}</li>
+                    <li><strong>Timestamp:</strong> ${new Date().toISOString()}</li>
+                </ul>
+                
+                <h6>Configurações de Rede:</h6>
+                <ul>
+                    <li><strong>Protocolo:</strong> ${window.location.protocol}</li>
+                    <li><strong>Host:</strong> ${window.location.host}</li>
+                    <li><strong>Porta Frontend:</strong> ${window.location.port || '80/443'}</li>
+                    <li><strong>Porta Backend:</strong> 8000</li>
+                </ul>
+            `;
+            
+            document.getElementById('diagnostic-info').innerHTML = diagnostic;
+        }
+    </script>
+</body>
+</html>
