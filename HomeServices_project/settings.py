@@ -40,7 +40,9 @@ if 'RAILWAY_STATIC_URL' in os.environ:
 # CORS settings para permitir comunicação com frontend
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
+    "http://localhost:8081",
     "http://127.0.0.1:8080",
+    "http://127.0.0.1:8081",
     "https://edenilsonmaffezzoli.github.io",
     "http://edenilsonmaffezzoli.github.io",
 ]
