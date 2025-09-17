@@ -15,11 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Railway deployment settings
-try:
-    import dj_database_url
-except ImportError:
-    dj_database_url = None
+# dj_database_url será importado quando necessário
 
 
 # Quick-start development settings - unsuitable for production
@@ -128,9 +124,13 @@ DATABASES = {
     }
 }
 
-# Use PostgreSQL in production (Railway)
-if 'DATABASE_URL' in os.environ and dj_database_url:
-    DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
+# Configuração para Railway (PostgreSQL)
+if 'DATABASE_URL' in os.environ:
+    try:
+        import dj_database_url
+        DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
+    except ImportError:
+        pass
 
 
 # Password validation
