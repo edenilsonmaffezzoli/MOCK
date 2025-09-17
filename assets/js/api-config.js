@@ -14,13 +14,13 @@ const API_CONFIG = {
             return 'http://localhost:8000';
         }
         
-        // GitHub Pages
+        // GitHub Pages - conecta com Django local
         if (hostname === 'edenilsonmaffezzoli.github.io') {
-            return 'https://web-production-b793800f.up.railway.app';
+            return 'http://localhost:8000';
         }
         
         // Produção Railway (fallback)
-        return 'https://web-production-b793800f.up.railway.app';
+        return 'http://localhost:8000';
     })(),
     ENDPOINTS: {
         // Autenticação
