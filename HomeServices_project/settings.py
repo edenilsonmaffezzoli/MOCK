@@ -16,7 +16,10 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Railway deployment settings
-import dj_database_url
+try:
+    import dj_database_url
+except ImportError:
+    dj_database_url = None
 
 
 # Quick-start development settings - unsuitable for production
@@ -76,7 +79,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -86,6 +88,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Adicionar WhiteNoise apenas em produção
+if 'RAILWAY_STATIC_URL' in os.environ:
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 ROOT_URLCONF = 'HomeServices_project.urls'
 
@@ -119,7 +125,7 @@ DATABASES = {
 }
 
 # Use PostgreSQL in production (Railway)
-if 'DATABASE_URL' in os.environ:
+if 'DATABASE_URL' in os.environ and dj_database_url:
     DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
 
 
@@ -175,7 +181,10 @@ STATICFILES_DIRS = [
 
 # Static files for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Usar WhiteNoise storage apenas em produção
+if 'RAILWAY_STATIC_URL' in os.environ:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

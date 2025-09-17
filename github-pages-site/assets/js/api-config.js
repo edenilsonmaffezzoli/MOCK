@@ -5,8 +5,10 @@
 
 // Configuração da API
 const API_CONFIG = {
-    // URL do projeto no Railway
-    BASE_URL: 'https://web-production-b793800f.up.railway.app', // URL do Railway
+    // Detecta automaticamente o ambiente
+    BASE_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+        ? 'http://127.0.0.1:8000'  // Desenvolvimento local
+        : 'https://web-production-b793800f.up.railway.app', // Produção Railway
     ENDPOINTS: {
         // Autenticação
         LOGIN: '/api/auth/login/',
